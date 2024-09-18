@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{CE5D0282-14F5-4574-9FED-0D8796827651}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecorVista.Domain", "DecorVista.Domain\DecorVista.Domain.csproj", "{18A63B17-F8F2-427E-925F-65B9CFF4D7A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE5D0282-14F5-4574-9FED-0D8796827651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE5D0282-14F5-4574-9FED-0D8796827651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE5D0282-14F5-4574-9FED-0D8796827651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE5D0282-14F5-4574-9FED-0D8796827651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18A63B17-F8F2-427E-925F-65B9CFF4D7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18A63B17-F8F2-427E-925F-65B9CFF4D7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18A63B17-F8F2-427E-925F-65B9CFF4D7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18A63B17-F8F2-427E-925F-65B9CFF4D7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0B0D404-220B-4196-9E02-872F96EE6EBB}
+	EndGlobalSection
+EndGlobal
