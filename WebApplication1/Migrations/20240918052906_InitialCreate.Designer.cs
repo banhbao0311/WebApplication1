@@ -12,8 +12,8 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(DecorVistaDbContext))]
-    [Migration("20240918043756_Second")]
-    partial class Second
+    [Migration("20240918052906_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("interior_designer_id");
 
-                    b.ToTable("Blog");
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("DecorVista.Domain.Cart", b =>
@@ -87,7 +87,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("user_id");
 
-                    b.ToTable("Cart");
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("DecorVista.Domain.Consultation", b =>
@@ -138,7 +138,7 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Functionality");
+                    b.ToTable("Functionalities");
                 });
 
             modelBuilder.Entity("DecorVista.Domain.Gallery", b =>
@@ -171,7 +171,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("room_type_id");
 
-                    b.ToTable("Gallery");
+                    b.ToTable("Galleries");
                 });
 
             modelBuilder.Entity("DecorVista.Domain.GalleryDetails", b =>
@@ -266,7 +266,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("user_id");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("DecorVista.Domain.Product", b =>
@@ -359,7 +359,7 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("RoomType");
+                    b.ToTable("RoomTypes");
                 });
 
             modelBuilder.Entity("DecorVista.Domain.Subcribe", b =>
@@ -382,7 +382,7 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("user_id");
 
-                    b.ToTable("Subcribe");
+                    b.ToTable("Subcribes");
                 });
 
             modelBuilder.Entity("DecorVista.Domain.User", b =>

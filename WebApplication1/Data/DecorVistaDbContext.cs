@@ -10,13 +10,21 @@ namespace WebApplication1.Data
         {
         }
 
-
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Cart> Carts { get; set; }
         public DbSet<Consultation> Consultations { get; set; }
+        public DbSet<Functionality> Functionalities { get; set; }
+        public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<GalleryDetails> GalleryDetails { get; set; }
         public DbSet<InteriorDesigner> InteriorDesigners { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<RoomType> RoomTypes { get; set; }
+        public DbSet<Subcribe> Subcribes { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserDetails> UserDetails { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

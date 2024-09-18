@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -11,7 +12,7 @@ namespace WebApplication1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Functionality",
+                name: "Functionalities",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -20,11 +21,11 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Functionality", x => x.id);
+                    table.PrimaryKey("PK_Functionalities", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RoomType",
+                name: "RoomTypes",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -33,7 +34,7 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoomType", x => x.id);
+                    table.PrimaryKey("PK_RoomTypes", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -70,14 +71,14 @@ namespace WebApplication1.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Products_Functionality_functionality_id",
+                        name: "FK_Products_Functionalities_functionality_id",
                         column: x => x.functionality_id,
-                        principalTable: "Functionality",
+                        principalTable: "Functionalities",
                         principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Gallery",
+                name: "Galleries",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -90,11 +91,11 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Gallery", x => x.id);
+                    table.PrimaryKey("PK_Galleries", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Gallery_RoomType_room_type_id",
+                        name: "FK_Galleries_RoomTypes_room_type_id",
                         column: x => x.room_type_id,
-                        principalTable: "RoomType",
+                        principalTable: "RoomTypes",
                         principalColumn: "id");
                 });
 
@@ -127,7 +128,7 @@ namespace WebApplication1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
+                name: "Orders",
                 columns: table => new
                 {
                     id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -136,9 +137,9 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Order", x => x.id);
+                    table.PrimaryKey("PK_Orders", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Order_Users_user_id",
+                        name: "FK_Orders_Users_user_id",
                         column: x => x.user_id,
                         principalTable: "Users",
                         principalColumn: "id",
@@ -170,7 +171,7 @@ namespace WebApplication1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cart",
+                name: "Carts",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -181,14 +182,14 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cart", x => x.id);
+                    table.PrimaryKey("PK_Carts", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Cart_Products_product_id",
+                        name: "FK_Carts_Products_product_id",
                         column: x => x.product_id,
                         principalTable: "Products",
                         principalColumn: "id");
                     table.ForeignKey(
-                        name: "FK_Cart_Users_user_id",
+                        name: "FK_Carts_Users_user_id",
                         column: x => x.user_id,
                         principalTable: "Users",
                         principalColumn: "id");
@@ -207,9 +208,9 @@ namespace WebApplication1.Migrations
                 {
                     table.PrimaryKey("PK_GalleryDetails", x => x.id);
                     table.ForeignKey(
-                        name: "FK_GalleryDetails_Gallery_gallery_id",
+                        name: "FK_GalleryDetails_Galleries_gallery_id",
                         column: x => x.gallery_id,
-                        principalTable: "Gallery",
+                        principalTable: "Galleries",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -220,7 +221,7 @@ namespace WebApplication1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subcribe",
+                name: "Subcribes",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -230,16 +231,40 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subcribe", x => x.id);
+                    table.PrimaryKey("PK_Subcribes", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Subcribe_Gallery_gallery_id",
+                        name: "FK_Subcribes_Galleries_gallery_id",
                         column: x => x.gallery_id,
-                        principalTable: "Gallery",
+                        principalTable: "Galleries",
                         principalColumn: "id");
                     table.ForeignKey(
-                        name: "FK_Subcribe_Users_user_id",
+                        name: "FK_Subcribes_Users_user_id",
                         column: x => x.user_id,
                         principalTable: "Users",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Blogs",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    interior_designer_id = table.Column<int>(type: "int", nullable: false),
+                    title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    images = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    status = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Blogs", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Blogs_InteriorDesigners_interior_designer_id",
+                        column: x => x.interior_designer_id,
+                        principalTable: "InteriorDesigners",
                         principalColumn: "id");
                 });
 
@@ -302,13 +327,18 @@ namespace WebApplication1.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cart_product_id",
-                table: "Cart",
+                name: "IX_Blogs_interior_designer_id",
+                table: "Blogs",
+                column: "interior_designer_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Carts_product_id",
+                table: "Carts",
                 column: "product_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cart_user_id",
-                table: "Cart",
+                name: "IX_Carts_user_id",
+                table: "Carts",
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
@@ -322,8 +352,8 @@ namespace WebApplication1.Migrations
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Gallery_room_type_id",
-                table: "Gallery",
+                name: "IX_Galleries_room_type_id",
+                table: "Galleries",
                 column: "room_type_id");
 
             migrationBuilder.CreateIndex(
@@ -343,8 +373,8 @@ namespace WebApplication1.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_user_id",
-                table: "Order",
+                name: "IX_Orders_user_id",
+                table: "Orders",
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
@@ -368,13 +398,13 @@ namespace WebApplication1.Migrations
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Subcribe_gallery_id",
-                table: "Subcribe",
+                name: "IX_Subcribes_gallery_id",
+                table: "Subcribes",
                 column: "gallery_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Subcribe_user_id",
-                table: "Subcribe",
+                name: "IX_Subcribes_user_id",
+                table: "Subcribes",
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
@@ -388,7 +418,10 @@ namespace WebApplication1.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cart");
+                name: "Blogs");
+
+            migrationBuilder.DropTable(
+                name: "Carts");
 
             migrationBuilder.DropTable(
                 name: "Consultations");
@@ -397,13 +430,13 @@ namespace WebApplication1.Migrations
                 name: "GalleryDetails");
 
             migrationBuilder.DropTable(
-                name: "Order");
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Reviews");
 
             migrationBuilder.DropTable(
-                name: "Subcribe");
+                name: "Subcribes");
 
             migrationBuilder.DropTable(
                 name: "UserDetails");
@@ -415,16 +448,16 @@ namespace WebApplication1.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Gallery");
+                name: "Galleries");
 
             migrationBuilder.DropTable(
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Functionality");
+                name: "Functionalities");
 
             migrationBuilder.DropTable(
-                name: "RoomType");
+                name: "RoomTypes");
         }
     }
 }
